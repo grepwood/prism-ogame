@@ -1,0 +1,27 @@
+
+From: 	Fleet Command
+To: 	grepwood
+Subject: 	Espionage report of blub1 [2:35:4]
+Date: 	30.12.2013 22:50:19
+
+    delete
+
+Resources on
+blub1 [2:35:4] (Player: Tiffy) at 12-30 22:50:18
+Metal:	598.241 	Crystal: 	167.096
+Deuterium:	26.474 	Energy: 	3.108
+Activity
+Your espionage does not show abnormalities in the atmosphere of the planet. There appears to have been no activity on the planet within the last hour.
+fleets
+Defense
+Building
+Metal Mine	22	Crystal Mine	17
+Deuterium Synthesizer	10	Solar Plant	21
+Robotics Factory	9	Shipyard	1
+Metal Storage	7	Crystal Storage	6
+Deuterium Tank	3	Research Lab	1
+Research
+Computer Technology	1	 	 
+Chance of counter-espionage: 0 %
+Attack
+

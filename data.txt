@@ -1,0 +1,41 @@
+
+2 from 3
+From: 	Fleet Command
+To: 	grepwood
+Subject: 	Espionage report of COROT-7b [2:335:14]
+Date: 	13.11.2013 20:25:22
+
+    delete
+
+Resources on
+COROT-7b [2:35:14] (Player: CrimsonAvenger) at 11-13 20:25:20
+Metal:	857.439 	Crystal: 	75.000
+Deuterium:	865.000 	Energy: 	2.854
+Activity
+Your espionage does not show abnormalities in the atmosphere of the planet. There appears to have been no activity on the planet within the last hour.
+fleets
+Small Cargo	34	Solar Satellite	1
+Defense
+Rocket Launcher	47	Light Laser	21
+Heavy Laser	4	Gauss Cannon	6
+Ion Cannon	20	Plasma Turret	1
+Small Shield Dome	1	Large Shield Dome	1
+Building
+Metal Mine	4	Crystal Mine	4
+Deuterium Synthesizer	16	Solar Plant	18
+Fusion Reactor	8	Robotics Factory	10
+Shipyard	8	Metal Storage	3
+Crystal Storage	3	Deuterium Tank	7
+Research Lab	1	 	 
+Research
+Espionage Technology	10	Computer Technology	11
+Weapons Technology	12	Shielding Technology	12
+Armour Technology	12	Energy Technology	12
+Hyperspace Technology	8	Combustion Drive	11
+Impulse Drive	9	Hyperspace Drive	6
+Laser Technology	14	Ion Technology	12
+Plasma Technology	8	Intergalactic Research Network	3
+Astrophysics	10	 	 
+Chance of counter-espionage: 31 %
+Attack
+
