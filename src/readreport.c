@@ -9,17 +9,25 @@
 
 #include "readreport.h"
 
-void whosaidthat(FILE ** fp, char snitch[])
+char * whosaidthat(FILE ** fp)
 {
 	char * line = NULL;
+	static char snitch[21];
+	char * ptr = NULL;
 	size_t length = 0;
+	memset(snitch,0,21);
 	do
 	{
 		grepline(&line,&length,*fp);
 	}
 	while(strncmp(line,"To",2));
-	strncpy(snitch,line+5,length-6);
+	length -= 6;
+	if(length <= 20) {
+		strncpy(snitch,line+5,length);
+		ptr = snitch;
+	}
 	free(line);
+	return ptr;
 }
 
 #if !defined LANGUAGE
@@ -38,16 +46,25 @@ uint8_t get_tango(FILE ** fp, struct Planet * sucker)
 	uint8_t count1 = 0;
 	uint8_t count2 = 0;
 	uint8_t result = 0;
+	static char BadGuy[21];
 	size_t length = 0;
+	memset(BadGuy,0,21);
+	puts("Declared");
 	do
 	{
 		grepline(&line,&length,*fp);
 	}
 	while(strncmp(line,"Subject",7));
 
+	puts("Scanned");
+	puts(line);
 	for(count1 = DOX_OFFSET; line[count1] != ' ' && line[count1+1] != '['; ++count1, ++count2){}
-	strncpy(sucker->Name,line+DOX_OFFSET,count2);
+	if(count2 <= 20) {
+		memcpy(BadGuy,line+DOX_OFFSET,count2);
+		sucker->Name = BadGuy;
+	}
 	result += count2;
+	puts("Got name");
 
 	for(count2 = 0, count1 = count1+2; line[count1+count2] != ':'; ++count2){}
 	sucker->Galaxy = strtol(line+count1,NULL,10);
@@ -86,20 +103,28 @@ time_t r_time(FILE ** fp)
 	return mktime(&tm);
 }
 
-void losersname(FILE ** fp, char loser[], uint8_t offset)
+char * losersname(FILE ** fp, uint8_t offset)
 {
 	size_t length = 0;
 	uint8_t count = 0;
 	char * line = NULL;
-	do
-	{
+	static char result[21];
+	char * ptr = NULL;
+	memset(result,0,21);
+	do {
 		grepline(&line,&length,*fp);
-	}
-	while(strncmp(line,"Resources on",12));
+	} while(memcmp(line,"Resources on",12));
 	grepline(&line,&length,*fp);
-	for( ; line[offset+count] != ')' && line[offset+count+1] != ' '; ++count){}
-	strncpy(loser,line+offset,count);
+	while(line[offset+count] != ')' && line[offset+count+1] != ' '){
+		++count;
+	}
+/* OGame doesn't allow usernames longer than 20 bytes */
+	if(count <= 20) {
+		strncpy(result,line+offset,count);
+		ptr = result;
+	}
 	free(line);
+	return ptr;
 }
 
 void booty(FILE ** fp, struct Resource * swag)

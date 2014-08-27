@@ -1,10 +1,9 @@
 #include <stdio.h>
-#undef __USE_BSD
 #include <stdlib.h>
 #include <string.h>
 
 #include "readreport.h"
-#include "endian.h"
+#include "pog-endian.h" /* DO NOT CALL IT endian.h !!! */
 
 #if LANGUAGE == ENGLISH
 #	define PLAYER_N 5
@@ -109,25 +108,21 @@ void dumpResearch(FILE ** dump, struct Research * r)
 void pfhor(FILE ** report, FILE ** dump)
 {
 /* Initialize memory */
-	char snitch[21];
+	char * snitch;
 	time_t tiem = 0;
 	uint8_t verbosity = 0;
 	uint8_t NameOffset = 9+PLAYER_N; /* Recycled into various values later on */
-	struct Planet TheirPlanet = {{0},{0},0,0,0};
+	struct Planet TheirPlanet = {NULL,NULL,0,0,0};
 	struct Resource TheirResource = {0,0,0};
 	struct Fleet TheirFleet = {0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	struct Defense TheirDefense = {0,0,0,0,0,0,0,0,0,0};
 	struct Building TheirBuildings = {0,0,0,0,0,0,0,0};
 	struct Research TheirResearch = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-/* Clean up some stuff */
-	memset(snitch,0,21);
-	memset(TheirPlanet.Name,0,21);
-	memset(TheirPlanet.Owner,0,21);
 /* Time to read */
-	whosaidthat(report, snitch);
+	snitch = whosaidthat(report);
 	NameOffset += get_tango(report, &TheirPlanet);
 	tiem = r_time(report);
-	losersname(report,TheirPlanet.Owner,NameOffset);
+	TheirPlanet.Owner = losersname(report,NameOffset);
 	booty(report, &TheirResource);
 	verbosity = get_verbosity(report);
 /* We can start dropping while still collecting */

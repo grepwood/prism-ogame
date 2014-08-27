@@ -2,8 +2,8 @@
 
 struct Planet
 {
-	char Name[21];
-	char Owner[21];
+	char * Name;
+	char *Owner;
 	uint8_t Galaxy;
 	uint16_t System;
 	uint8_t Position;

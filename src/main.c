@@ -36,10 +36,11 @@ int main(int argc, char * argv[])
 		exit(0);
 	}
 
-	whosaidthat(&fp, &snitch);
-	get_tango(&fp, &TheirPlanet,&NameOffset);
+	snitch = whosaidthat(&fp);
+	get_tango(&fp, &TheirPlanet);
+	puts("Calling function...");
 	tiem = r_time(&fp);
-	losersname(&fp,&TheirPlanet.Owner,NameOffset);
+	TheirPlanet.Owner = losersname(&fp,NameOffset);
 	booty(&fp, &TheirResource);
 	verbosity = get_verbosity(&fp);
 	if(verbosity == 1)
@@ -61,10 +62,8 @@ int main(int argc, char * argv[])
 
 /*	printf("Metal: %lu\nCrystal: %lu\nDeuterium: %lu\n",TheirResource.Metal,TheirResource.Crystal,TheirResource.Deuterium);
 */	printf("%llu\n",(long long)tiem);
+	puts(snitch);
 
-	free(TheirPlanet.Owner);
-	free(TheirPlanet.Name);
-	free(snitch);
 	fclose(fp);
 	return 0;
 }
