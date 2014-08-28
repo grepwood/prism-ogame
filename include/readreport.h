@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <time.h>
 
 #ifndef HAVE_STRUCTS
 #define HAVE_STRUCTS
@@ -10,10 +11,10 @@
 #include "research.h"
 #endif
 
-void whosaidthat(FILE ** fp, char snitch[]);
+char * whosaidthat(FILE ** fp);
 uint8_t get_tango(FILE ** fp, struct Planet * sucker);
 time_t r_time(FILE ** fp);
-void losersname(FILE ** fp, char loser[], uint8_t offset);
+char * losersname(FILE ** fp, uint8_t offset);
 void booty(FILE ** fp, struct Resource * swag);
 uint8_t get_verbosity(FILE ** fp);
 uint64_t readfield(char * pattern, char * source);
